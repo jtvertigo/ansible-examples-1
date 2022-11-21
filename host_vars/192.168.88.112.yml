@@ -1,16 +1,15 @@
 ---
-ntp: "99.99.99.99"
 
-BGP:
-  ASN: "65002"
-  peers:
-    - neighbor: "10.0.0.1"
-      peer_asn: "65001"
-
-    - neighbor: "12.12.12.12"
-      peer_asn: "12"
-
-eigrp_style: "normal"
-
-eigrp:
-  asn: "2"
+ospf:
+  default_originate: false
+  rid: "2.2.2.2"
+  networks:
+    - network: "10.1.2.0"
+      wildcard: "0.0.0.255"
+      area: "0"
+    - network: "10.2.3.0"
+      wildcard: "0.0.0.255"
+      area: "0"
+    - network: "10.2.4.0"
+      wildcard: "0.0.0.255"
+      area: "0"
