@@ -1,0 +1,21 @@
+---
+
+- name: "Different playbook"
+  hosts: 192.168.88.111
+  connection: network_cli
+  #vars:
+  #  - TASK_ONE_NAME: "Totally different task one name"
+
+  roles:
+    - eigrp_role
+    
+  tasks:
+    - name: "Further verify"
+      cisco.ios.ios_command:
+        commands:
+          - "show ip eigrp interface"
+      register: "new_output"
+
+    - name: "Print verification"
+      debug:
+        msg: "{{ new_output }}"

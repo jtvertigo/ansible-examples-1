@@ -1,0 +1,17 @@
+---
+
+- name: "VyOS Playbook"
+  hosts: 192.168.88.114
+  connection: network_cli
+
+  tasks:
+    - name: "Remove banner configuration to VyOS"
+      vyos.vyos.vyos_banner:
+        banner: pre-login
+        state: absent
+
+    - name: "Adding post-login VyOS banner"
+      vyos.vyos.vyos_banner:
+        banner: post-login
+        text: "This is a post-login banner"
+        state: present

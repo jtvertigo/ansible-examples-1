@@ -1,0 +1,25 @@
+---
+
+- name: "Play to configure EIGRP stuff"
+  hosts: "192.168.88.111"
+  connection: network_cli
+
+  tasks:
+    - name: "Task 1 - push EIGRP"
+      cisco.ios.ios_config:
+        src: "eigrp.j2"
+      register: eigrp_result
+
+    - name: "Task 2 - print EIGRP config"
+      debug:
+        msg: "{{ eigrp_result.commands }}"
+
+    - name: "Task 3 - verify EIGRP config"
+      cisco.ios.ios_command:
+        commands:
+          - "show run | section eigrp"
+      register: eigrp_show_output
+
+    - name: "Task 4 - print show command"
+      debug:
+        msg: "{{ eigrp_show_output.stdout_lines }}"

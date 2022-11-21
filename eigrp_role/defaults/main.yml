@@ -1,0 +1,8 @@
+---
+# defaults file for eigrp_role
+TASK_ONE_NAME: "Pushing some EIGRP configs"
+TASK_TWO_NAME: "Printing EIGRP config output"
+TASK_THREE_NAME: "Sending EIGRP show command"
+TASK_FOUR_NAME: "Printing output of show command"
+
+eigrp_template: "eigrp_role_example.j2"

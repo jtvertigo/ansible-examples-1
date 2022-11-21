@@ -1,0 +1,16 @@
+---
+
+- name: "REGISTER PLAYBOOK"
+  hosts: 192.168.88.111
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "Push config and print results"
+      cisco.ios.ios_config:
+        src: "ntp.j2"
+      register: ntp_result
+
+    - name: "Print results"
+      debug:
+        msg: "{{ ntp_result }}"

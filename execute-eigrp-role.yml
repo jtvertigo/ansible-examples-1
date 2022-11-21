@@ -1,0 +1,9 @@
+---
+
+- name: "Playbook that does some EIGRP stuff"
+  hosts: 192.168.88.111
+  connection: network_cli
+
+  roles:
+    - eigrp_role
+    
